@@ -15,7 +15,7 @@
 
         <Button Name="BackButton" Content="Назад" Width="75" Margin="5" Click="BackButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <Frame Name="MainFrame" Grid.Row="1" Margin="0"/>
+        <Frame Name="MainFrame" Source="Pages/AuthPage.xaml" Grid.Row="1" Margin="0"/>
 
         <TextBlock Name="DateTimeText" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5"/>
     </Grid>

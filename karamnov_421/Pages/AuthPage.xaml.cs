@@ -43,8 +43,37 @@ namespace karamnov_421.Pages
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBoxPassword.Password))
+            {
+                MessageBox.Show("Введите логин и пароль!");
+                return;
+            }
+            using (var db = new karamnovEntities())
+            {
+                var user = db.User.AsNoTracking().FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == PasswordBoxPassword.Password);
+                
+                if (user == null)
+                {
+                    MessageBox.Show("Пользователь с такими данными не найден!");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь успешно найден!");
+                    switch (user.Role) 
+                    {
+                        case "администратор":
+                            NavigationService?.Navigate(new AdminPage());
+                            break;
+                        case "пользователь":
+                            NavigationService?.Navigate(new UserPage());
+                            break;
+                    }
+                }
+                
+            }
         }
+        
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {

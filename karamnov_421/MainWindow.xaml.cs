@@ -53,7 +53,18 @@ namespace karamnov_421
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            if(MainFrame.CanGoBack) MainFrame.GoBack();
+        }
 
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (!(e.Content is Page page)) return;
+            this.Title = $"ProjectByKaramnov - {page.Title}";
+
+            if (page is Pages.AuthPage)
+                BackButton.Visibility = Visibility.Hidden;
+            else
+                BackButton.Visibility = Visibility.Visible;
         }
     }
 }

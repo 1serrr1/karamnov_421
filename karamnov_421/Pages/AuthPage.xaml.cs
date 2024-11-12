@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace karamnov_421.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
-    /// </summary>
+   
     public partial class AuthPage : Page
     {
         public AuthPage()
@@ -40,6 +39,14 @@ namespace karamnov_421.Pages
                 txtHintPassword.Visibility = Visibility.Hidden;
             }
         }
+        public static string GetHash(string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
+        }
+        
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -48,9 +55,13 @@ namespace karamnov_421.Pages
                 MessageBox.Show("Введите логин и пароль!");
                 return;
             }
-            using (var db = new karamnovEntities())
+
+            string hashedPassword = GetHash(PasswordBoxPassword.Password);
+
+            using (var db = new karamnov_421Entities2())
             {
-                var user = db.User.AsNoTracking().FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == PasswordBoxPassword.Password);
+                
+                var user = db.User.AsNoTracking().FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == hashedPassword);
                 
                 if (user == null)
                 {

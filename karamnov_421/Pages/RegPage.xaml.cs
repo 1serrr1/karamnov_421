@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -78,7 +79,7 @@ namespace karamnov_421.Pages
                 return;
             }
 
-            using (var db = new karamnovEntities())
+            using (var db = new karamnov_421Entities2())
             {
                 if (db.User.Any(u => u.Login == TextBoxLogin.Text))
                 {
@@ -101,13 +102,13 @@ namespace karamnov_421.Pages
                 return;
             }
 
-            using (var db = new karamnovEntities())
+            using (var db = new karamnov_421Entities2())
             {
                 var userObject = new User
                 {
                     FIO = TextBoxFIO.Text,
                     Login = TextBoxLogin.Text,
-                    Password = PasswordBoxPassword.Password,
+                    Password = GetHash(PasswordBoxPassword.Password),
                     Role = ((ComboBoxItem)CmbRole.SelectedItem).Content.ToString()
                 };
 
@@ -124,5 +125,13 @@ namespace karamnov_421.Pages
             NavigationService?.Navigate(new AuthPage());
 
         }
+        public static string GetHash(string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
+        }
+
     }
 }

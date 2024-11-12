@@ -8,7 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Авторизация">
 
-    <Grid Background="#B5D5C6">
+    <Grid>
 
         <TextBlock Text="Логин" FontSize="14"  
                    VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,50,0,0"/>

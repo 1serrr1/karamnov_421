@@ -77,7 +77,7 @@ namespace karamnov_421.Pages
 
         private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService?.Navigate(new RegPage());
         }
     }
 }

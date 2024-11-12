@@ -1,0 +1,57 @@
+﻿<Page x:Class="karamnov_421.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:karamnov_421.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация">
+
+    <Grid>
+       
+        <TextBlock Text="Введите логин"  VerticalAlignment="Top" Margin="50,14,10,0"/>
+        <TextBlock Text="Логин или почта" Foreground="Gray" Name="txtHintLogin" 
+   VerticalAlignment="Top" HorizontalAlignment="Left" Width="145" Height="25" Margin="300,10,0,0"/>
+        <TextBox x:Name="TextBoxLogin" Width="145" Height="25" Margin="300,10,0,0"
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" TextChanged="TextBoxLogin_Changed"
+                 ToolTip="Введите логин или почту"/>
+        
+
+        <TextBlock Text="Введите пароль"  VerticalAlignment="Top" Margin="50,54,10,0"/>
+        <TextBlock Text="Пароль" Foreground="Gray" Name="txtHintPassword" 
+           VerticalAlignment="Top" HorizontalAlignment="Left" Margin="300,50,0,0" Width="145" Height="25"/>
+        <PasswordBox x:Name="PasswordBoxPassword" Width="145" Height="25" Margin="300,50,0,0"
+                     VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" PasswordChanged="PasswordBoxPassword_Changed"
+                     ToolTip="Введите пароль"/>
+
+        <TextBlock Text="Подтвердите пароль"  VerticalAlignment="Top" Margin="50,94,10,0"/>
+        <TextBlock Text="Повторите пароль" Foreground="Gray" Name="txtHintPassword2" 
+   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="300,90,0,0" Width="145" Height="25"/>
+        <PasswordBox x:Name="PasswordBoxConfirmPassword" Width="145" Height="25" Margin="300,90,0,0"
+                     VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent"
+                     ToolTip="Повторите пароль" PasswordChanged="PasswordBoxConfirmPassword_PasswordChanged"/>
+
+        <TextBlock Text="Выберите роль"  VerticalAlignment="Top" Margin="50,134,-10,0"/>
+        <ComboBox x:Name="CmbRole" Width="145" Height="25" Margin="300,130,0,0"
+                  VerticalAlignment="Top" HorizontalAlignment="Left" ToolTip="Выберите роль">
+            <ComboBoxItem Content="администратор"/>
+            <ComboBoxItem Content="пользователь" IsSelected="True"/>
+        </ComboBox>
+
+        <TextBlock Text="Введите ФИО" VerticalAlignment="Top" Margin="50,174,-10,0"/>
+        <TextBlock Text="ФИО" Foreground="Gray" Name="txtHintFIO" 
+VerticalAlignment="Top" HorizontalAlignment="Left" Margin="300,170,0,0" Width="145" Height="25"/>
+        <TextBox x:Name="TextBoxFIO" Width="145" Height="25" Margin="300,170,0,0"
+                 VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent"
+                 ToolTip="Введите ваше ФИО" TextChanged="TextBoxFIO_TextChanged"/>
+
+        <Button x:Name="CancelButton" Content="Отмена" Width="145" Height="30"
+                Margin="50,220,130,0" VerticalAlignment="Top" HorizontalAlignment="Left"
+                 Click="CancelButton_Click" ToolTip="Отменить регистрацию и вернуться назад"/>
+
+        <Button x:Name="RegisterButton" Content="Регистрация" Width="145" Height="30"
+                Margin="300,220,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
+                 Click="RegisterButton_Click" ToolTip="Зарегистрировать нового пользователя"/>
+    </Grid>
+</Page>

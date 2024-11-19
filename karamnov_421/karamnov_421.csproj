@@ -72,6 +72,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model31.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model31.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model31.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model31.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model31.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model31.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model5.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +102,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model5.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddUserPage.xaml.cs">
+      <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
@@ -97,7 +115,7 @@
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>Model5.tt</DependentUpon>
+      <DependentUpon>Model31.tt</DependentUpon>
     </Compile>
     <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
@@ -115,6 +133,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,6 +218,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model5.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Model31.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model31.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model31.edmx.diagram">
+      <DependentUpon>Model31.edmx</DependentUpon>
+    </None>
     <None Include="Model5.edmx.diagram">
       <DependentUpon>Model5.edmx</DependentUpon>
     </None>
@@ -209,6 +238,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model31.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model31.edmx</DependentUpon>
+      <LastGenOutput>Model31.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model31.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model31.edmx</DependentUpon>
+      <LastGenOutput>Model31.cs</LastGenOutput>
+    </Content>
     <Content Include="Model5.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model5.edmx</DependentUpon>

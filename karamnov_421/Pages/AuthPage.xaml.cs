@@ -58,7 +58,7 @@ namespace karamnov_421.Pages
 
             string hashedPassword = GetHash(PasswordBoxPassword.Password);
 
-            using (var db = new karamnov_421Entities2())
+            using (var db = new karamnovEntities1())
             {
                 
                 var user = db.User.AsNoTracking().FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == hashedPassword);

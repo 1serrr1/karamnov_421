@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,13 @@ namespace karamnov_421.Pages
         public AdminPage()
         {
             InitializeComponent();
-            DataGridUser.ItemsSource = karamnov_421Entities2.GetContext().User.ToList();
+
+            DataGridUser.ItemsSource = karamnovEntities1.GetContext().User.ToList();
         }
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Pages.AddUserPage(null));
         }
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
@@ -38,20 +40,31 @@ namespace karamnov_421.Pages
             {
                 try
                 {
-                    karamnov_421Entities2.GetContext().User.RemoveRange(usersForRemoving);
-                    karamnov_421Entities2.GetContext().SaveChanges();
+                    karamnovEntities1.GetContext().User.RemoveRange(usersForRemoving);
+
+                    karamnovEntities1.GetContext().SaveChanges();
                     MessageBox.Show("Данные успешно удалены!");
-                    DataGridUser.ItemsSource = karamnov_421Entities2.GetContext().User.ToList();
+
+                    DataGridUser.ItemsSource = karamnovEntities1.GetContext().User.ToList();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show($"Ошибка удаления: {ex.Message}");
                 }
             }
         }
 
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                karamnovEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                DataGridUser.ItemsSource = karamnovEntities1.GetContext().User.ToList();
+            }
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new Pages.AddUserPage((sender as Button).DataContext as User));
 
         }
     }

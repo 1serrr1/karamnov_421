@@ -79,7 +79,7 @@ namespace karamnov_421.Pages
                 return;
             }
 
-            using (var db = new karamnov_421Entities2())
+            using (var db = new karamnovEntities1())
             {
                 if (db.User.Any(u => u.Login == TextBoxLogin.Text))
                 {
@@ -102,7 +102,7 @@ namespace karamnov_421.Pages
                 return;
             }
 
-            using (var db = new karamnov_421Entities2())
+            using (var db = new karamnovEntities1())
             {
                 var userObject = new User
                 {

@@ -258,6 +258,7 @@
       <DependentUpon>Model5.edmx</DependentUpon>
       <LastGenOutput>Model5.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\default.png" />
     <Resource Include="chat_bubble_message_conversation_icon_264208.ico" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
